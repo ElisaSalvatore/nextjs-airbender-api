@@ -10,7 +10,8 @@ export default function Character( {character} ) {
 
 export async function getStaticProps( {params} ) {
     //return an array, that's why naming "results" variable
-    const results = await fetch(`https://last-airbender-api.herokuapp.com/api/v1/characters?name=${params.characterId.replace(/\-/, '+')}`).then(res => res.json());
+    const characterId = params.characterId.replace(/\-/, '+');
+    const results = await fetch(`https://last-airbender-api.herokuapp.com/api/v1/characters?name=${characterId}`).then(res => res.json());
 
     return {
         props: {
